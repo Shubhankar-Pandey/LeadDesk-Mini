@@ -27,10 +27,9 @@ export default function SignupForm() {
     const navigate = useNavigate();
 
     const onSubmit = async(data: SignupFormData) => {
-    let result;
     try{
         setLoading(true);
-        result = await axios.post(adminSignUp, {
+        await axios.post(adminSignUp, {
             name : data.name, 
             email : data.email,
             password : data.password,
