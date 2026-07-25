@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import { adminSignout, changeStatus, getLead } from "../apiEndpoints";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { resetUser } from "../Redux/userSlice";
 
 export default function AdminDashoboard() {
     const [leadData, setLeadData] = useState<any>(null);
@@ -14,6 +16,7 @@ export default function AdminDashoboard() {
     const [loading, setLoading] = useState<boolean>(true);
 
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     async function getAllLead() {
         try {
@@ -116,6 +119,7 @@ export default function AdminDashoboard() {
             await axios.get(adminSignout, {withCredentials : true});
             toast.success("Signout successfull");
             navigate("/", {replace : true})
+            dispatch(resetUser());
         }
         catch(err){
             toast.error("Request failed");
