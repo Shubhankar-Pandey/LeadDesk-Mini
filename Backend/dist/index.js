@@ -7,8 +7,9 @@ import cookieparser from "cookie-parser";
 const app = express();
 app.use(express.json());
 app.use(cookieparser());
+const allowedOrigin = process.env.FRONTEND_URL?.replace(/\/$/, '');
 app.use(cors({
-    origin: process.env.FRONTEND_URL,
+    origin: allowedOrigin,
     credentials: true,
 }));
 app.use(router);
