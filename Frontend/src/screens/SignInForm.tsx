@@ -16,11 +16,9 @@ interface SigninFormData {
 export default function SigninForm() {
 
     const user = useSelector((state : any) => state.user);
-    console.log("user = ", user);
     const navigate = useNavigate();
 
     useEffect(() => {
-        console.log("user.user = ", user.user);
         if(user.user !== null){
             navigate("/admin/dashboard");
         }
@@ -50,7 +48,6 @@ export default function SigninForm() {
       }, { withCredentials: true });
 
       if(result.data.success){
-        console.log("result.data.name = ", result.data.name);
         dispatch(setUser(result.data.name));
         toast.success("Signin successful");
         navigate("/admin/dashboard");

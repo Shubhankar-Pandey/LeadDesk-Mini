@@ -53,11 +53,10 @@ export default function AdminDashoboard() {
                 getAllLead();
             }
             else if(!response?.data?.success){
-                console.log(response.data.message);
+                toast.error(response.data.message);
             }
         }
         catch(error){
-            console.log(error);
             toast.error("Updation failed");
         }
         finally{

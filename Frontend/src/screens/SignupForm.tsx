@@ -30,14 +30,13 @@ export default function SignupForm() {
     let result;
     try{
         setLoading(true);
-        console.log("endpoint = ", adminSignUp);
         result = await axios.post(adminSignUp, {
             name : data.name, 
             email : data.email,
             password : data.password,
             confirmPassword : data.confirmPassword,
         }, {withCredentials : true})
-        console.log("result = ", result);
+
         toast.success("Signup successfull");
         navigate("/admin/signin");
     }

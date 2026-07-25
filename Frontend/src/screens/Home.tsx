@@ -26,7 +26,6 @@ export default function HomeScreen() {
   const submitHandler = async (data: FormData) => {
     try {
         setLoading(true);
-        console.log("before api call");
         const response = await axios.post(createLead, {
             name: data.name,
             email: data.email,
@@ -34,7 +33,6 @@ export default function HomeScreen() {
             budgetTo: data.budgetTo,
             message: data.message,
         });
-        console.log("response = ", response);
         if (response.data.success) {
             toast.success("Lead submitted successfully");
         }
