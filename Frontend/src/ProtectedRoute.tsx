@@ -24,7 +24,7 @@ export default function ProtectedRoute() {
   }
 
   useEffect(() => {
-    if (!user?.name) {
+    if (!user?.user) {
       meCall();
     } else {
       setIsAuthenticated(true);

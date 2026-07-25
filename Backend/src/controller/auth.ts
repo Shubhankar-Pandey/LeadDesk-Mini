@@ -100,7 +100,7 @@ export const signin = async(req : Request, res : Response) => {
         const cookieOptions = {
             httpOnly: true,
             secure: process.env.NODE_ENV === "production",
-            sameSite: "strict" as const,   // 'as const' needed so TS infers the literal type, not string
+            sameSite: "none" as const,   // 'as const' needed so TS infers the literal type, not string
             maxAge: 2 * 60 * 60 * 1000,
         };
         return res.cookie("token", token, cookieOptions).status(200).json({
@@ -123,7 +123,7 @@ export const signout = async (req: Request, res: Response) => {
         res.clearCookie("token", {
             httpOnly: true,
             secure: process.env.NODE_ENV === "production",
-            sameSite: "strict" as const,
+            sameSite: "none" as const,
         });
         return res.status(200).json({
             success: true,
